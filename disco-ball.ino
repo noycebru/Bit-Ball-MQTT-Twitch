@@ -22,8 +22,6 @@ void setup() {
   setupPins();
 
   setupWIFI();
- 
-  setupWIFI();
 
   setupMQTT();
 }
@@ -34,7 +32,7 @@ void setupSerial() {
 }
 
 void setupPins() {
-    pinMode(LED_PIN, OUTPUT);
+  pinMode(RELAY_PIN, OUTPUT);
 }
 
 void setupWIFI() {
@@ -130,11 +128,13 @@ void activateRobot(long activateTime) {
   Serial.print("activateRobot called: ");
   Serial.println(activateTime);
 
-
-  // TODO: Add code for new robot here
-
+  // Turn the disco ball relay on
+  digitalWrite(RELAY_PIN, HIGH);
+  delay(activateTime);
+  // Turn the disco ball relay off
+  digitalWrite(RELAY_PIN, LOW);
+  delay(25);
 
   Serial.println("activateRobot completed!");
   Serial.println();
-
 }
